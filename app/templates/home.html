@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class='card'>
+<h2>{{ t.welcome }}</h2>
+<p>Three easy choices. No snob talk.</p>
+<a class='btn' href='{{ url_for("register") }}'>Start free</a>
+</section>
+{% endblock %}
