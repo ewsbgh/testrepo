@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class='card'>
+<h2>Dashboard</h2>
+<p>Status: {{ current_user.status }} | Membership: {{ current_user.membership_level }}</p>
+{% if current_user.status == 'APPROVED' %}
+<a class='btn' href='{{ url_for("selector") }}'>Open wine selector</a>
+{% if current_user.last_hl %}<form method='post' action='{{ url_for("use_saved_profile") }}'><button class='btn secondary'>Use my saved profile</button></form>{% endif %}
+<a class='btn secondary' href='{{ url_for("rater_apply") }}'>Apply to Rate My Own Wines (Under development)</a>
+{% if current_user.membership_level == 'RATER' %}<a class='btn secondary' href='{{ url_for("my_ratings") }}'>My Ratings (Under development)</a>{% endif %}
+<a class='btn secondary' href='{{ url_for("contact") }}'>Contact the Cellar Bouncer</a>
+{% endif %}
+</section>
+{% endblock %}

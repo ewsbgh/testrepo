@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method='post' class='card form'>
+<h2>Contact the Cellar Bouncer</h2>
+<input name='subject' placeholder='Subject' required>
+<textarea name='body' placeholder='Message' required></textarea>
+<input name='company' class='hp' tabindex='-1' autocomplete='off'>
+<button class='btn'>Send</button>
+</form>
+{% endblock %}

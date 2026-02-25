@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method='post' action='{{ url_for("set_locale") }}' class='card form'>
+<h2>Choose your language</h2>
+<select name='locale' required>
+<option value='en-US'>English (US)</option>
+<option value='en-GB'>English (UK)</option>
+</select>
+<button class='btn'>Continue</button>
+</form>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class='card'>
+<h2>Your match results</h2>
+<p>{{ persona }}</p>
+{% if wines %}
+{% for wine in wines %}
+<article class='wine-card'><h3>{{ wine.wine_name }} ({{ wine.vintage }})</h3><p>{{ wine.estate }} · {{ wine.region }}</p><p>{{ wine.winemaker_notes }}</p></article>
+{% endfor %}
+<form method='post' action='{{ url_for("save_profile") }}'><button class='btn'>Save this as My Profile</button></form>
+{% else %}
+<p>No exact matches today.</p><p>We’re expanding the cellar all the time.</p>
+<a class='btn secondary' href='{{ url_for("selector") }}'>Adjust my choices</a>
+<form method='post' action='{{ url_for("notify_request") }}'>
+<input type='hidden' name='hl' value='{{hl}}'><input type='hidden' name='fd' value='{{fd}}'><input type='hidden' name='sb' value='{{sb}}'>
+<button class='btn'>Save this profile for future notification</button></form>
+{% endif %}
+</section>
+{% endblock %}

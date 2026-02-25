@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class='card'>
+<h2>Step {{ step }} of 3</h2>
+<form method='post' action='{{ url_for("selector_confirm") }}' class='form'>
+{% if step == 1 %}
+<label>Heavy to Light</label>
+<input type='range' min='1' max='5' value='{{ session.get("step_1",3) }}' name='value' id='slider1'>
+<div class='graphic glass' id='g1'></div>
+{% elif step == 2 %}
+<label>Fruity to Dry</label>
+<input type='range' min='1' max='5' value='{{ session.get("step_2",3) }}' name='value' id='slider2'>
+<div class='graphic grapes' id='g2'></div>
+<a class='btn secondary' href='{{ url_for("selector", step=1) }}'>Back / Edit Step 1</a>
+{% else %}
+<label>Smooth to Bright</label>
+<input type='range' min='1' max='5' value='{{ session.get("step_3",3) }}' name='value' id='slider3'>
+<div class='graphic sparkle' id='g3'></div>
+<a class='btn secondary' href='{{ url_for("selector", step=2) }}'>Back / Edit Step 2</a>
+{% endif %}
+<input type='hidden' name='step' value='{{ step }}'>
+<button class='btn'>Confirm</button>
+</form>
+</section>
+<script src='{{ url_for("static", filename="js/slider.js") }}'></script>
+{% endblock %}
